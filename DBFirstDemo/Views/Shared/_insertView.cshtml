@@ -1,0 +1,52 @@
+﻿@model DBFirstDemo.Models.UserViewModel
+@{
+    ViewBag.Title = "Register User";
+}
+
+<h2>Register User</h2>
+
+@using (Html.BeginForm("Index", "Test", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <fieldset>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(m => m.user_data.ID, new { @class = "form-control", })
+        <div class="form-group">
+            @Html.LabelFor(m => m.user_data.FirstName, new { @class = "col-lg-2 control-label" })
+            <div class="col-lg-10">
+                @Html.TextBoxFor(m => m.user_data.FirstName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.user_data.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.user_data.LastName, new { @class = "col-lg-2 control-label" })
+            <div class="col-lg-10">
+                @Html.TextBoxFor(m => m.user_data.LastName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.user_data.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.user_data.MiddleName, new { @class = "col-lg-2 control-label" })
+            <div class="col-lg-10">
+                @Html.TextBoxFor(m => m.user_data.MiddleName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.user_data.MiddleName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.user_data.Contact, new { @class = "col-lg-2 control-label" })
+            <div class="col-lg-10">
+                @Html.TextBoxFor(m => m.user_data.Contact, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.user_data.Contact, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+        </div>
+
+    </fieldset>
+}

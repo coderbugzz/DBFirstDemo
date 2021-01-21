@@ -1,0 +1,54 @@
+﻿
+@model DBFirstDemo.Models.UserViewModel
+@{
+    ViewBag.Title = "Home Page";
+
+}
+
+<div class="">
+    <div id="Form-container">
+
+        @{
+            if (ViewBag.Method == "Edit")
+            {
+                @Html.Partial("_EditView")
+            }
+            else if (ViewBag.Method == "Register")
+            {
+                @Html.Partial("_insertView")
+            }
+        }
+
+    </div>
+<div class="">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Middle Name</th>
+                <th>Contact Number</th>
+                <th colspan="2">Option</th>
+            </tr>
+        </thead>
+        <tbody id="Table_data">
+            @{ 
+                foreach (var row in Model.user_list)
+                { 
+                        <tr>
+                            <td>@row.ID</td>
+                            <td>@row.FirstName</td>
+                            <td>@row.LastName</td>
+                            <td>@row.MiddleName</td>
+                            <td>@row.Contact</td>
+                            <td><a class="btn btn-primary" href="@Url.Action("EditUser","Test",new { ID = row.ID})">Edit</a></td>
+                            <td><a class="btn btn-danger" href="@Url.Action("DeleteUser","Test", new { ID = row.ID})">Delete</a></td>
+                        </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div></div>
+
+
